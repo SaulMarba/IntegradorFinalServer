@@ -54,16 +54,16 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGO_URL, {
+
+mongoose.connect(process.env.MONGO_URL, 
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(process.env.PORT, () => console.log('Server on port:'+process.env.PORT));
 
-    /* añadir data solo una vez para evitar duplicado de datos. */
-    
+    /* añadir data solo una vez para evitar duplicado de datos. */ 
     //User.insertMany(users);
     //Post.insertMany(posts);
   })
